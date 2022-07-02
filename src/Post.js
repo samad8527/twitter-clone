@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useEffect,forwardRef}from 'react'
 import './Post.css'
 import {Avatar , Button} from '@mui/material';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
@@ -6,16 +6,16 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PublishIcon from '@mui/icons-material/Publish';
-function Post({
+const Post=forwardRef(({
     displayName,
     userName,
     verified,
     text,
     image,
     avatar
-}) {
+},ref)=>{
   return (
-    <div className='post'>
+    <div className='post' ref={ref}>
         <div className="post__avatar">
         <Avatar src={avatar} />
         </div>
@@ -23,9 +23,9 @@ function Post({
             <div className="post__header">
                 <div className="post__headerText">
                     <h3>
-                        {displayName}{" "}<span className='post__headerSpecial'>
-                         {verified && <VerifiedUserIcon className='post__badge'/>}@{userName}
-                        </span>
+                        {displayName}{" "}
+                        <span className='post__headerSpecial'>
+                         {verified && <VerifiedUserIcon className='post__badge'/>}@{userName}</span>
                     </h3>
                 </div>
                 <div className="post__headerDescription">
@@ -42,6 +42,6 @@ function Post({
             </div>
     </div>
   )
-}
+})
 
 export default Post
